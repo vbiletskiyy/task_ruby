@@ -1,5 +1,5 @@
 def most_common(string)
-  words = string.downcase.tr(",.'?!",' ').split(' ')
+  words = string.downcase.tr(",.?!",' ').split(' ')
   counts = words.each_with_object(Hash.new(0)) { |e, h| h[e] += 1 }
   max_quantity = counts.sort_by { |k,v| -v }.to_h
   common_words = max_quantity.select { |k, v| v }.keys
@@ -10,5 +10,6 @@ def most_common(string)
   end
 end
 
-p most_common("Lorem'lorem'cel'ipsum'Cel'oremloreminpsumselsel")
+
+p most_common("Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum ")
 p most_common("")
