@@ -1,0 +1,14 @@
+def most_common(string)
+  words = string.downcase.tr(",.'?!",' ').split(' ')
+  counts = words.each_with_object(Hash.new(0)) { |e, h| h[e] += 1 }
+  max_quantity = counts.sort_by { |k,v| -v }.to_h
+  common_words = max_quantity.select { |k, v| v }.keys
+  if common_words.length >= 3
+    common_words[0..2]
+  else
+    []
+  end
+end
+
+p most_common("Lorem'lorem'cel'ipsum'Cel'oremloreminpsumselsel")
+p most_common("")
